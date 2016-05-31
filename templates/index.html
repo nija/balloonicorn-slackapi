@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block body %}
+
+    <!-- Some basic page content layout -->
+    <div class="container full" id="cats">
+	<div class="row">
+		<div class="col-md-9 col-sm-12">
+		<h1>Easy Peasy Incoming Webhooks</h1>
+			<p>Because there's no need to make things more complicated than they already are. <br><br>
+
+	                <!-- Start Here: Webhook Form Submission -->
+	                <h3>Build your message!</h3>
+	                	<!-- 1. Set me up to post to the '/submit' route in server.py -->
+				<form action="*" method="post">
+
+					<h5>Message Body</h5><br>
+					<!-- 2. Update the main text field here so the name matches the name of the element you are requesting in server.py -->
+					<label>"main text" : <input type="text" name="main-text"></label><br>
+
+					<!-- 3. Add another text field, and call it 'moar-text'.
+						This one should show up on a new line. -->
+
+					<!-- 4. Add another field where you can send in a link! -->
+
+					<!-- 5. Try sending in an emoji like :tada: in through one of your fields!  -->
+					<!-- 6. Try sending a message with formatting: bold, italics, etc.  -->
+					<h5>Attachments</h5><br>
+					<!-- 7. Add three more text input fields here with names to match
+						to send a message with an attachment.
+						You can use a hex code prefaced by a '#' for the color field.
+						Update the server.py file to handle these new elements of the request. -->
+					<label>"title-1": </label>
+					<label>"text-1": </label>
+					<label>"color-1": </label><br><br><br>
+
+					<!-- 8. Go wild! Add more attachments, put links and emojis in them, and play with formatting. -->
+					<!-- 9. See if you can figure out how to change the icon your webhook is posting with. You could do this from api.slack.com, but try to do it programmatically :) -->
+
+					<br>
+					<input type="submit" value="Show me the message!">
+				</form>
+
+
+			<br>
+			<br>
+			<br>
+
+			<!-- We'll handle flash messages here to let you know if things are working! -->
+			<h3>Did it work?</h3>
+			{% with messages = get_flashed_messages() %}
+			  {% if messages %}
+			    <ul class=flashes>
+			    {% for message in messages %}
+			      <li>{{ message }}</li>
+			    {% endfor %}
+			    </ul>
+			  {% endif %}
+			{% endwith %}
+                </div> <!-- close column -->
+        </div> <!-- close row -->
+    </div> <!-- /.container -->
+
+
+{% endblock %}
